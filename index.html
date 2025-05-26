@@ -1,189 +1,500 @@
 <!DOCTYPE html>
-<html lang="vi">
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Nguyen Thanh Long - Portfolio</title>
-  <link href="https://fonts.googleapis.com/css?family=Roboto:400,700&display=swap" rel="stylesheet"/>
-  <style>
-    body { font-family: 'Roboto', Arial, sans-serif; margin: 0; background: #f8fafc; color: #222; }
-    header, footer { background: #fff; box-shadow: 0 2px 8px #0001; }
-    .container { max-width: 900px; margin: auto; padding: 24px; }
-    nav { display: flex; justify-content: space-between; align-items: center; }
-    nav a { margin: 0 12px; color: #333; text-decoration: none; font-weight: 500; }
-    nav a:hover { color: #2563eb; }
-    .hero { text-align: center; padding: 60px 0 40px 0; }
-    .hero h1 { font-size: 2.5rem; margin-bottom: 12px; }
-    .hero span { background: linear-gradient(90deg,#2563eb,#9333ea); -webkit-background-clip: text; color: transparent; }
-    .hero p { color: #555; font-size: 1.2rem; }
-    .buttons { margin: 24px 0; }
-    .buttons a { display: inline-block; margin: 0 8px; padding: 10px 22px; border-radius: 6px; background: #2563eb; color: #fff; text-decoration: none; font-weight: 500; transition: background 0.2s; }
-    .buttons a.outline { background: #fff; color: #2563eb; border: 2px solid #2563eb; }
-    .buttons a:hover { background: #1d4ed8; color: #fff; }
-    .buttons a.outline:hover { background: #2563eb; color: #fff; }
-    section { margin: 48px 0; }
-    h2 { text-align: center; font-size: 2rem; margin-bottom: 24px; }
-    .about, .skills { display: flex; flex-wrap: wrap; gap: 32px; justify-content: center; }
-    .about-img { flex: 0 0 200px; }
-    .about-img img { width: 200px; height: 200px; border-radius: 50%; border: 4px solid #2563eb22; object-fit: cover; }
-    .about-info { flex: 1 1 300px; }
-    .projects { display: flex; flex-wrap: wrap; gap: 24px; justify-content: center; }
-    .card { background: #fff; border-radius: 10px; box-shadow: 0 2px 8px #0001; padding: 18px; width: 290px; }
-    .card img { width: 100%; height: 150px; object-fit: cover; border-radius: 8px; }
-    .card h3 { margin: 12px 0 8px 0; }
-    .badges { margin: 8px 0; }
-    .badge { display: inline-block; background: #e0e7ff; color: #3730a3; border-radius: 4px; padding: 2px 8px; margin: 2px; font-size: 0.9em; }
-    .card-links a { margin-right: 10px; color: #2563eb; text-decoration: none; }
-    .card-links a:hover { text-decoration: underline; }
-    .skills-list { display: flex; flex-direction: column; gap: 8px; }
-    .skills-list strong { color: #2563eb; }
-    .contact { text-align: center; }
-    .contact a { color: #2563eb; text-decoration: none; font-weight: 500; }
-    .contact a:hover { text-decoration: underline; }
-    footer { text-align: center; padding: 18px 0; margin-top: 40px; font-size: 0.95em; color: #555; }
-    @media (max-width: 700px) {
-      .about, .skills, .projects { flex-direction: column; align-items: center; }
-      .about-img { margin-bottom: 18px; }
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyen Thanh Long - Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            scroll-behavior: smooth;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 20px; }
+        nav {
+            background: #fff;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+        nav .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 20px;
+        }
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        .nav-links a:hover { color: #2563eb; }
+        .mobile-menu { display: none; flex-direction: column; cursor: pointer; }
+        .mobile-menu span {
+            width: 25px; height: 3px; background: #333; margin: 3px 0; transition: 0.3s;
+        }
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+        .hero-content p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            margin: 0 10px;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .btn:hover { background: #1d4ed8; transform: translateY(-2px); }
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+        }
+        .btn-outline:hover {
+            background: white;
+            color: #2563eb;
+        }
+        .social-links {
+            margin-top: 2rem;
+            animation: fadeInUp 1s ease 0.6s both;
+        }
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 15px;
+            transition: transform 0.3s ease;
+        }
+        .social-links a:hover { transform: translateY(-3px); }
+        .about { padding: 80px 0; background: #f8fafc; }
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #1e293b;
+        }
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+        .about-text p {
+            margin-bottom: 1.5rem;
+            color: #64748b;
+            font-size: 1.1rem;
+        }
+        .about-image { text-align: center; }
+        .about-image img {
+            width: 300px; height: 300px; border-radius: 50%;
+            object-fit: cover; border: 5px solid #2563eb;
+        }
+        .projects { padding: 80px 0; }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .project-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+        .project-card:hover { transform: translateY(-5px); }
+        .project-image {
+            height: 200px;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #64748b;
+            font-size: 1.2rem;
+        }
+        .project-image img {
+            width: 100%; height: 100%; object-fit: cover;
+        }
+        .project-content { padding: 1.5rem; }
+        .project-content h3 { margin-bottom: 1rem; color: #1e293b; }
+        .project-content p { color: #64748b; margin-bottom: 1.5rem; }
+        .project-tech {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 1.5rem;
+        }
+        .tech-tag {
+            background: #e0e7ff; color: #3730a3;
+            padding: 0.25rem 0.75rem; border-radius: 15px; font-size: 0.8rem;
+        }
+        .project-links a {
+            color: #2563eb; text-decoration: none; margin-right: 1rem; font-weight: 500;
+        }
+        .project-links a:hover { text-decoration: underline; }
+        .skills { padding: 80px 0; background: #f8fafc; }
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        .skill-category {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .skill-category h3 { margin-bottom: 1.5rem; color: #1e293b; }
+        .skill-tags {
+            display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center;
+        }
+        .skill-tag {
+            background: #f1f5f9; color: #475569;
+            padding: 0.5rem 1rem; border-radius: 20px; font-size: 0.9rem; border: 1px solid #e2e8f0;
+        }
+        .contact { padding: 80px 0; text-align: center; }
+        .contact-content { max-width: 600px; margin: 0 auto; }
+        .contact-content p { color: #64748b; margin-bottom: 2rem; font-size: 1.1rem; }
+        footer {
+            background: #1e293b;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .mobile-menu { display: flex; }
+            .hero-content h1 { font-size: 2.5rem; }
+            .about-content { grid-template-columns: 1fr; text-align: center; }
+            .projects-grid { grid-template-columns: 1fr; }
+            .skills-grid { grid-template-columns: 1fr; }
+        }
+        @media (max-width: 480px) {
+            .hero-content h1 { font-size: 2rem; }
+            .section-title { font-size: 2rem; }
+            .about-image img { width: 250px; height: 250px; }
+        }
+    </style>
 </head>
 <body>
-  <header>
-    <div class="container">
-      <nav>
-        <div><strong>Nguyen Thanh Long</strong></div>
-        <div>
-          <a href="#about">About</a>
-          <a href="#projects">Projects</a>
-          <a href="#skills">Skills</a>
-          <a href="#contact">Contact</a>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="logo">Nguyen Thanh Long</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
         </div>
-      </nav>
-    </div>
-  </header>
+    </nav>
 
-  <section class="hero">
-    <h1>Hi, I'm <span>Nguyen Thanh Long</span></h1>
-    <p>Full Stack Developer passionate about creating beautiful, functional, and user-centered digital experiences.</p>
-    <div class="buttons">
-      <a href="#projects">View My Work</a>
-      <a href="#contact" class="outline">Get In Touch</a>
-      <a href="resume.pdf" target="_blank" class="outline">Resume</a>
-    </div>
-    <div class="buttons">
-      <a href="https://github.com/NguyenLong03126" target="_blank">GitHub</a>
-      <a href="https://www.linkedin.com/in/long-nguy%E1%BB%85n-56835b368/" target="_blank">LinkedIn</a>
-      <a href="mailto:nguyenlong22356@gmail.com">Email</a>
-    </div>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h1>Hi, I'm <span style="color: #fbbf24;">Nguyen Thanh Long</span></h1>
+                <p>Full Stack Developer passionate about creating beautiful, functional, and user-centered digital experiences.</p>
+                <div>
+                    <a href="#projects" class="btn">View My Work</a>
+                    <a href="#contact" class="btn btn-outline">Get In Touch</a>
+                </div>
+                <div class="social-links">
+                    <a href="https://github.com/NguyenLong03126" target="_blank"><i class="fab fa-github"></i></a>
+                    <a href="https://www.linkedin.com/in/long-nguy%E1%BB%85n-56835b368/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                    <a href="mailto:nguyenlong22356@gmail.com"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="about">
-    <h2>About Me</h2>
-    <div class="about container">
-      <div class="about-img">
-        <img src="avtLong.jpg" alt="Profile" />
-      </div>
-      <div class="about-info">
-        <p>
-          Tôi là một lập trình viên full-stack với hơn 3 năm kinh nghiệm xây dựng các ứng dụng web giải quyết vấn đề thực tế. Tôi yêu thích công nghệ hiện đại và luôn sẵn sàng học hỏi những công cụ, framework mới.
-        </p>
-        <p>
-          Ngoài lập trình, tôi còn thích khám phá công nghệ mới, đóng góp cho các dự án mã nguồn mở và chia sẻ kiến thức qua blog, cộng đồng.
-        </p>
-      </div>
-    </div>
-  </section>
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <!-- Thay thế phần này trong About Me -->
+                      <p>
+                        I am a full-stack developer with over 3 years of experience building web applications that solve real-world problems. I am passionate about modern technologies and always eager to learn new tools and frameworks.
+                      </p>
+                      <p>
+                        Besides programming, I enjoy exploring new technologies, contributing to open-source projects, and sharing knowledge through blogs and communities.
+                      </p>
+                      <p>
+                        I always strive to write clean, maintainable code and create beautiful, efficient user experiences.
+                      </p>
+                    <a href="/resume.pdf" class="btn" target="_blank">
+                        <i class="fas fa-download"></i> Download Resume
+                    </a>
+                </div>
+                <div class="about-image">
+                    <img src="avtLong.jpg" alt="Nguyen Thanh Long">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="projects">
-    <h2>Featured Projects</h2>
-    <div class="projects container">
-      <div class="card">
-        <img src="spotify.png" alt="Spotify Clone" />
-        <h3>Web Spotify Clone</h3>
-        <div class="badges">
-          <span class="badge">Next.js</span>
-          <span class="badge">JavaScript</span>
-          <span class="badge">ReactJS</span>
-          <span class="badge">AWS</span>
-          <span class="badge">Python</span>
-          <span class="badge">Django</span>
-          <span class="badge">PostgreSQL</span>
+    <!-- Projects Section -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2 class="section-title">Featured Projects</h2>
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="spotify.png" alt="Spotify Clone">
+                    </div>
+                    <div class="project-content">
+                        <h3>Web Spotify Clone</h3>
+                        <p>A full-stack Spotify website built with ReactJS, AWS, Python, featuring user authentication, playlist, and admin management.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Next.js</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">ReactJS</span>
+                            <span class="tech-tag">AWS</span>
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">Django</span>
+                            <span class="tech-tag">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/sieunguyen28/Website_Spotify" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://your-ecommerce-demo.vercel.app" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="book.jpg" alt="Book Ecommerce">
+                    </div>
+                    <div class="project-content">
+                        <h3>Book e-commerce</h3>
+                        <p>A full-stack e-commerce website built with .Net, featuring user authentication, product management, and a secure payment system.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">.Net</span>
+                            <span class="tech-tag">CSS</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">SQL Server</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/NVTines/Book_Ecommerce" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://your-task-manager.vercel.app" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="BK.png" alt="Booking Train">
+                    </div>
+                    <div class="project-content">
+                        <h3>Booking Train</h3>
+                        <p>A Booking train website built with JavaSpring Boot, featuring user authentication, ticket management, and a secure payment system.</p>
+                        <div class="project-tech">
+                            <span class="tech-tag">Java SpringBoot</span>
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">HTML</span>
+                            <span class="tech-tag">CSS</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" target="_blank">
+                                <i class="fab fa-github"></i> Code
+                            </a>
+                            <a href="https://your-weather-app.vercel.app" target="_blank">
+                                <i class="fas fa-external-link-alt"></i> Live Demo
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-        <p>Một website Spotify full-stack với đăng nhập, playlist, quản lý admin.</p>
-        <div class="card-links">
-          <a href="https://github.com/sieunguyen28/Website_Spotify" target="_blank">GitHub</a>
-          <a href="https://your-ecommerce-demo.vercel.app" target="_blank">Demo</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="book.jpg" alt="Book Ecommerce" />
-        <h3>Book e-commerce</h3>
-        <div class="badges">
-          <span class="badge">.Net</span>
-          <span class="badge">CSS</span>
-          <span class="badge">C#</span>
-          <span class="badge">JavaScript</span>
-          <span class="badge">HTML</span>
-          <span class="badge">SQL Server</span>
-        </div>
-        <p>Website bán sách full-stack với đăng nhập, quản lý sản phẩm, thanh toán an toàn.</p>
-        <div class="card-links">
-          <a href="https://github.com/NVTines/Book_Ecommerce" target="_blank">GitHub</a>
-          <a href="https://your-task-manager.vercel.app" target="_blank">Demo</a>
-        </div>
-      </div>
-      <div class="card">
-        <img src="BK.png" alt="Booking Train" />
-        <h3>Booking Train</h3>
-        <div class="badges">
-          <span class="badge">Java SpringBoot</span>
-          <span class="badge">JavaScript</span>
-          <span class="badge">MySQL</span>
-          <span class="badge">HTML</span>
-          <span class="badge">CSS</span>
-        </div>
-        <p>Website đặt vé tàu với đăng nhập, quản lý vé, thanh toán an toàn.</p>
-        <div class="card-links">
-          <a href="#" target="_blank">GitHub</a>
-          <a href="https://your-weather-app.vercel.app" target="_blank">Demo</a>
-        </div>
-      </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="skills">
-    <h2>Skills & Technologies</h2>
-    <div class="skills container">
-      <div class="skills-list">
-        <strong>Frontend:</strong>
-        React, Next.js, TypeScript, Tailwind CSS, HTML5, JavaSpring Boot
-      </div>
-      <div class="skills-list">
-        <strong>Backend:</strong>
-        Python, Django, PostgreSQL, PHP
-      </div>
-      <div class="skills-list">
-        <strong>Tools & Others:</strong>
-        Git, Docker, AWS, Figma
-      </div>
-    </div>
-  </section>
+    <!-- Skills Section -->
+    <section id="skills" class="skills">
+        <div class="container">
+            <h2 class="section-title">Skills & Technologies</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3><i class="fas fa-code"></i> Frontend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">React</span>
+                        <span class="skill-tag">Next.js</span>
+                        <span class="skill-tag">TypeScript</span>
+                        <span class="skill-tag">Tailwind CSS</span>
+                        <span class="skill-tag">HTML5</span>
+                        <span class="skill-tag">JavaSpring Boot</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-server"></i> Backend</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Python</span>
+                        <span class="skill-tag">Django</span>
+                        <span class="skill-tag">PostgreSQL</span>
+                        <span class="skill-tag">PHP</span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3><i class="fas fa-tools"></i> Tools & Others</h3>
+                    <div class="skill-tags">
+                        <span class="skill-tag">Git</span>
+                        <span class="skill-tag">Docker</span>
+                        <span class="skill-tag">AWS</span>
+                        <span class="skill-tag">Figma</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section id="contact">
-    <h2>Get In Touch</h2>
-    <div class="contact container">
-      <p>
-        Tôi luôn sẵn sàng trao đổi về cơ hội mới, dự án thú vị hoặc chỉ đơn giản là trò chuyện về công nghệ.
-      </p>
-      <div class="buttons">
-        <a href="mailto:nguyenlong22356@gmail.com">Gửi Email</a>
-        <a href="https://www.linkedin.com/in/long-nguy%E1%BB%85n-56835b368/" target="_blank" class="outline">LinkedIn</a>
-      </div>
-    </div>
-  </section>
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <h2 class="section-title">Get In Touch</h2>
+                <p>I'm always open to discussing new opportunities, interesting projects, or just having a chat about technology. Feel free to reach out!</p>
+                <div>
+                    <a href="mailto:nguyenlong22356@gmail.com" class="btn">
+                        <i class="fas fa-envelope"></i> Send Email
+                    </a>
+                    <a href="https://www.linkedin.com/in/long-nguy%E1%BB%85n-56835b368/" target="_blank" class="btn btn-outline">
+                        <i class="fab fa-linkedin"></i> LinkedIn
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <footer>
-    © 2024 Nguyen Thanh Long. All rights reserved.
-  </footer>
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2024 Nguyen Thanh Long. All rights reserved.</p>
+            <div style="margin-top: 1rem;">
+                <a href="https://github.com/NguyenLong03126" target="_blank" style="color: #94a3b8; margin: 0 10px;">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/long-nguy%E1%BB%85n-56835b368/" target="_blank" style="color: #94a3b8; margin: 0 10px;">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="mailto:nguyenlong22356@gmail.com" style="color: #94a3b8; margin: 0 10px;">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navbar background change on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.backdropFilter = 'blur(10px)';
+            } else {
+                nav.style.background = '#fff';
+                nav.style.backdropFilter = 'none';
+            }
+        });
+
+        // Mobile menu toggle (basic implementation)
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', function() {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Add animation on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all sections for animation
+        document.querySelectorAll('section').forEach(section => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
